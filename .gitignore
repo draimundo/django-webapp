@@ -1,1 +1,3 @@
 .venv/
+merchex/db.sqlite3
+merchex/merchex/__pycache__/
