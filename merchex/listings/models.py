@@ -28,6 +28,7 @@ class Listing(models.Model):
         MISCELLANEOUS = 'MS'
 
     title = models.fields.CharField(max_length=100)
+    band = models.ForeignKey(Band, null=True, on_delete=models.SET_NULL)
     description = models.fields.CharField(max_length=1000)
     sold = models.fields.BooleanField(default=False)
     year = models.fields.IntegerField(

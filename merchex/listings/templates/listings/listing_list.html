@@ -5,7 +5,7 @@
 <p>Les articles en vente sont :</p>
 <ul>
     {% for listing in listings %}
-    <li>{{ listing.title }}</li>
+    <li><a href="{% url 'listing-detail' listing.id %}">{{ listing.title }}</a></li>
     {% endfor %}
 </ul>
 
