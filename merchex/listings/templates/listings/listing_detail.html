@@ -10,6 +10,7 @@
     <li>Type: {{listing.get_type_display}}</li>
     
     <p>{{ listing.description }}</p>
+    <a href="{% url 'listing-edit' listing.id %}">Modifier cet article</a>
     <a href="{% url 'listing-list' %}">Retour à la liste des articles</a>
 </ul>
 {% endblock %}

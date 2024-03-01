@@ -11,6 +11,17 @@ def band_detail(request, band_id):
     band = get_object_or_404(Band, pk=band_id)
     return render(request, "listings/band_detail.html", {"band": band})
 
+def band_edit(request, band_id):
+    band = get_object_or_404(Band, pk=band_id)
+    if request.method == "POST":
+        form = BandForm(request.POST, instance=band)
+        if form.is_valid():
+            form.save()
+            return redirect('band-detail', band_id=band.id)
+    else:
+        form = BandForm(instance=band)
+    return render(request, "listings/band_edit.html", {"form": form})
+
 def band_create(request):
     if request.method == "POST":
         form = BandForm(request.POST)
@@ -41,6 +52,17 @@ def listing_create(request):
     else:
         form = ListingForm()
     return render(request, "listings/listing_create.html", {"form": form})
+
+def listing_edit(request, listing_id):
+    listing = get_object_or_404(Listing, pk=listing_id)
+    if request.method == "POST":
+        form = ListingForm(request.POST, instance=listing)
+        if form.is_valid():
+            form.save()
+            return redirect('listing-detail', listing_id=listing.id)
+    else:
+        form = ListingForm(instance=listing)
+    return render(request, "listings/listing_edit.html", {"form": form})
 
 def contact(request):
     if request.method == "POST":
